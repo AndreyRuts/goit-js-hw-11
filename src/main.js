@@ -29,6 +29,7 @@ function handleSubmit(event) {
       }
       loader.style.display = "none";
       renderData(data.hits);
+      document.querySelector(".form").reset();
     })
     .catch((data) => {
       console.log(data);

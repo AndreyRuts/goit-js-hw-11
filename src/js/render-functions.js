@@ -28,6 +28,9 @@ export function renderData(apiArray) {
             </div>         
         </li>
     `).join("");
-    new SimpleLightbox(".list-item a");
-    test.refresh();
+    let simpBox = new SimpleLightbox(".list-item a", {
+        captionsData: "alt",
+        captionDelay: 250,
+    });
+    simpBox.refresh();
 }
