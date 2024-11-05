@@ -1,9 +1,5 @@
 import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
-
-import SimpleLightbox from 'simplelightbox';
-import 'simplelightbox/dist/simple-lightbox.min.css';
-
 import { fetchData } from "./js/pixabay-api";
 import { renderData } from "./js/render-functions";
 
@@ -15,15 +11,26 @@ form.addEventListener("submit", handleSubmit);
 
 function handleSubmit(event) {
   event.preventDefault();
-  const requestValue = event.currentTarget.elements.request.value;
+  const requestValue = event.target.elements.request.value;
+  if (requestValue === "") {
+    return;
+  }
+  gallery.innerHTML = "";
+  loader.style.display = "block";
 
   fetchData(requestValue)
     .then((data) => {
-        console.log(data); // temp assistant
+      const prepPic = data.hits;   
+      if (prepPic.length === 0) {
+        iziToast.error({
+          message: 'Sorry, there are no images matching your search query. Please try again!',
+          position: 'center',
+        });
+      }
+      loader.style.display = "none";
       renderData(data.hits);
     })
     .catch((data) => {
       console.log(data);
-      
     })
 }
