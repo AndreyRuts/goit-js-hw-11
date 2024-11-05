@@ -7,7 +7,6 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 import { fetchData } from "./js/pixabay-api";
 import { renderData } from "./js/render-functions";
 
-
 const form = document.querySelector(".form");
 const loader = document.querySelector(".loader");
 const gallery = document.querySelector(".gallery");
@@ -21,7 +20,7 @@ function handleSubmit(event) {
   fetchData(requestValue)
     .then((data) => {
         console.log(data); // temp assistant
-        gallery.innerHTML = renderData(data.hits);
+      renderData(data.hits);
     })
     .catch((data) => {
       console.log(data);

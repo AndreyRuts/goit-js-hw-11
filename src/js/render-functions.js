@@ -2,10 +2,10 @@ import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 const gallery = document.querySelector(".gallery");
 
-new SimpleLightbox('.gallery a');
+let test = new SimpleLightbox(".gallary a");
 
 export function renderData(apiArray) {
-    return apiArray.map(({ webformatURL, largeImageURL, tags, likes, views, comments, downloads }) =>
+    gallery.innerHTML = apiArray.map(({ webformatURL, largeImageURL, tags, likes, views, comments, downloads }) =>
         `<li class="list-item">
             <a href="${largeImageURL}">
                 <img class="list-item-img" src="${webformatURL}" alt="${tags}">
@@ -30,4 +30,5 @@ export function renderData(apiArray) {
             </a>
         </li>
     `).join("");
+    test.refresh();
 }
