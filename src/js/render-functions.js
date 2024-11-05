@@ -2,6 +2,7 @@ import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 const gallery = document.querySelector(".gallery");
 
+new SimpleLightbox('.gallery a');
 
 export function renderData(apiArray) {
     return apiArray.map(({ webformatURL, largeImageURL, tags, likes, views, comments, downloads }) =>

@@ -1,5 +1,9 @@
 import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
+
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
+
 import { fetchData } from "./js/pixabay-api";
 import { renderData } from "./js/render-functions";
 
@@ -16,7 +20,7 @@ function handleSubmit(event) {
 
   fetchData(requestValue)
     .then((data) => {
-        console.log(data);
+        console.log(data); // temp assistant
         gallery.innerHTML = renderData(data.hits);
     })
     .catch((data) => {

@@ -17,4 +17,8 @@ const API_KEY = "46908572-03cf8a6fd9728954a0f037e03";
       }
       return response.json();
     })
+    .catch(error => {
+     console.log("catch", error);
+   });
+   
 }
